@@ -3,7 +3,7 @@
         <title>Exercícios: Módulo 2</title>
     </head>
     <body>
-        <!--Ex.1-->
+        <!--Ex.1 e Ex.2-->
         <button id="quadrado">Criar quadrado</button>
         <script>
             var buttonElement=document.querySelector('#quadrado');
@@ -12,19 +12,10 @@
                 divElement.style.width=100;
                 divElement.style.height=100;
                 divElement.style.backgroundColor='#f00';
-                //divElement.style.marginTop=10;
-                ////////////////divElement.setAttribute('onmouseover','this.style.backgroundColor=getRandomColor()');	
+                divElement.style.marginTop=10;
+                divElement.setAttribute('onmouseover','this.style.backgroundColor=getRandomColor()');	
                 var containerElement=document.querySelector('body');
                 containerElement.appendChild(divElement);
-            };
-            //console.log(buttonElement)
-
-            /*boxElement.onmouseover=function(){
-                boxElement.style.backgroundColor=getRandomColor();
-                console.log("oi")
-            };*/
-            function trocaCor(){
-                this.style.backgroundColor=getRandomColor();
             };
             function getRandomColor() {
                 var letters = "0123456789ABCDEF";
@@ -36,17 +27,32 @@
             }
             var newColor = getRandomColor(); // #E943F0 
         </script>
-        <!--Ex.3-->
+        <!--Ex.3 e Ex.4-->
+        <input type="text" name="nome">
+        <button onClick="adicionar()">Adicionar</button>
         <script>
-            /*var nomes = ["Diego", "Gabriel", "Lucas"];
+            var nomes = ["Diego", "Gabriel", "Lucas"];
             var ulElement=document.createElement('ul');
             var containerElement=document.querySelector('body');
             containerElement.appendChild(ulElement);
-            for(i=0;i<nomes.length;i++){
+            for(var nome in nomes){
                 var liElement=document.createElement('li');
-                liElement.appendChild(nomes[i]);
+                var textElement=document.createTextNode(nomes[nome]);
+                liElement.appendChild(textElement);
                 ulElement.appendChild(liElement);
-            }*/
-        </script>8
+            }
+            function adicionar(){
+                var inputElement=document.querySelector('input[name=nome]');
+                var ulElement=document.querySelector('ul');
+                if(inputElement.value!=""){
+                    nomes.push(inputElement.value);
+                    var liElement=document.createElement('li');
+                    var textElement=document.createTextNode(inputElement.value);
+                    liElement.appendChild(textElement);
+                    ulElement.appendChild(liElement);
+                    inputElement.value=null;
+                }
+            }
+        </script>
     </body>
 </html>
