@@ -1,8 +1,8 @@
 module.exports={
-    entry:'./src/modulo2.js',
+    entry:['@babel/polyfill','./src/modulo3.js'],
     output:{
         path:__dirname+'/public',
-        filename:'modulo2_exer.js'
+        filename:'modulo3_exer.js'
     },
     devServer:{
         contentBase:__dirname+'/public'
