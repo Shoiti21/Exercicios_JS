@@ -1,5 +1,11 @@
 "use strict";
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
@@ -93,10 +99,97 @@ var arrMultIdade = usuarios.map(function (item) {
 var arrResMultIdade = arrMultIdade.filter(function (item) {
   return item.idade < 50;
 });
-console.log(arrResMultIdade); //Ex.3
+console.log(arrResMultIdade); //Ex.4
 
-var arr = [1, 2, 3, 4, 5];
-var array1 = arr.map(function (item) {
-  return item + 10;
+var empresa = {
+  nome: 'Rocketseat',
+  endereco: {
+    cidade: 'Rio do Sul',
+    estado: 'SC'
+  }
+};
+var nome = empresa.nome;
+var cidade = empresa.endereco.cidade;
+var estado = empresa.endereco.estado;
+console.log(nome); // Rocketseat
+
+console.log(cidade); // Rio do Sul
+
+console.log(estado); // SC
+
+function mostraInfo(usuario) {
+  return "".concat(usuario.nome, " tem ").concat(usuario.idade, " anos.");
+}
+
+mostraInfo({
+  nome: 'Diego',
+  idade: 23
 });
-console.log(array1);
+var nnome = mostraInfo.nome;
+var idade = mostraInfo.idade;
+
+var mostrarIdadeNome = function mostrarIdadeNome() {
+  return "".concat(nnome, " tem ").concat(idade, " anos.");
+};
+
+console.log(mostrarIdadeNome()); //Ex.5
+
+var arr = [1, 2, 3, 4, 5, 6];
+var num = 2;
+var x = arr.find(function (item) {
+  return item === num;
+});
+var y = arr.filter(function (item) {
+  return item != num;
+});
+console.log(x); // 1
+
+console.log(y); // [2, 3, 4, 5, 6]
+
+var soma = function soma() {
+  for (var _len = arguments.length, nums = new Array(_len), _key = 0; _key < _len; _key++) {
+    nums[_key] = arguments[_key];
+  }
+
+  return nums.reduce(function (total, next) {
+    return total + next;
+  });
+};
+
+console.log(soma(1, 2, 3, 4, 5, 6)); // 21
+
+console.log(soma(1, 2)); // 3
+
+var usuario = {
+  nome: 'Diego',
+  idade: 23,
+  endereco: {
+    cidade: 'Rio do Sul',
+    uf: 'SC',
+    pais: 'Brasil'
+  }
+};
+
+var usuario2 = _objectSpread({}, usuario, {
+  nome: "Gabriel"
+});
+
+var usuario3 = _objectSpread({}, usuario, {
+  nome: "Lontras"
+});
+
+console.log(usuario2);
+console.log(usuario3); //Ex.6
+
+var usuarioEx6 = 'Diego';
+var idadeEx6 = 23;
+console.log("O usu\xE1rio ".concat(usuarioEx6, " possui ").concat(idadeEx6, " anos")); //Ex.7
+
+var nomeEx7 = 'Diego';
+var idadeEx7 = 23;
+var usuarioEx7 = {
+  nomeEx7: nomeEx7,
+  idadeEx7: idadeEx7,
+  cidade: 'Rio do Sul'
+};
+console.log(usuarioEx7);
